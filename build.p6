@@ -78,6 +78,7 @@ for dir $text-dir -> $text {
     }
 }
 
+@texts.sort( { dateFromText( %^a<originalDate> ) <=> dateFromText( %^b<originalDate> )});
 
 spurt $output-dir ~ '/texte.html', $mu.render('texts-list', {
     menu => @menu-texts,
@@ -90,6 +91,12 @@ sub urlify(Str $text) {
     $result ~~ s:g/ <-[ a..z A..Z 0..9 _ \s ]>+ //;
     $result ~~ s:g/ <[ \s _ ]>+ /_/;
     return $result;
+}
+
+sub dateFromText( Str $text ) {
+    $text ~~ m/ (\d**1..2) \. (\d**1..2) \. (\d**4) /;
+    my ($day, $month, $year) = $0, $1, $2;
+    return Date.new($year, $month, $day);
 }
 
 =begin pod
