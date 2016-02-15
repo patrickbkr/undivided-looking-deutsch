@@ -1,0 +1,98 @@
+#!/usr/bin/env perl6
+
+use v6.c;
+
+use Text::Markdown:from<Perl5> 'markdown';
+use Template::Mustache;
+use YAMLish;
+use PathTools;
+
+my $output-dir = 'output';
+my $text-out-dir = 'texte';
+my $text-dir = 'texts';
+my $static-dir = 'static';
+
+rm( $output-dir.IO.dir, :r );
+
+"$output-dir/css".IO.mkdir;
+for "$static-dir/css".IO.dir { .copy: "$output-dir/css/" ~ $_.basename };
+"$output-dir/js".IO.mkdir;
+for "$static-dir/js".IO.dir { .copy: "$output-dir/js/" ~ $_.basename };
+"$output-dir/texte".IO.mkdir;
+
+my $mu = Template::Mustache.new: :from<./templates>;
+
+my @menu-home =
+    { :name('Texte'), :link('/texte.html') },
+    { :name('Kontakt'), :link('/kontakt.html') },
+    ;
+my @menu-texts =
+    { :active, :name('Texte'), :link('/texte.html') },
+    { :name('Kontakt'), :link('/kontakt.html') },
+    ;
+my @menu-text =
+    { :name('Texte'), :link('/texte.html') },
+    { :name('Kontakt'), :link('/kontakt.html') },
+    ;
+my @menu-contact =
+    { :name('Texte'), :link('/texte.html') },
+    { :active, :name('Kontakt'), :link('/kontakt.html') },
+    ;
+
+spurt $output-dir ~ '/index.html', $mu.render('home', { menu => @menu-home });
+spurt $output-dir ~ '/kontakt.html', $mu.render('contact', { menu => @menu-contact });
+
+my @texts;
+
+# Texts
+for dir $text-dir -> $text {
+    if ( $text.basename ~~ m/ ^ (.*)\.md $ / ) {
+        my $filecontent = slurp $text;
+        my ($, $yaml, $markdown) = $filecontent.split('---', 3).map: *.trim ;
+        my %params = load-yaml $yaml;
+        my $content = markdown $markdown;
+
+        my $filename = urlify( %params<title> ) ~ '.html';
+        my $link-name = "$text-out-dir/$filename";
+        my $target = "$output-dir/$link-name";
+
+        my $page = $mu.render('text', {
+            menu => @menu-text,
+            %params<title>:p,
+            originalTitle => %params<original-title>,
+            originalLink => %params<original-link>,
+            originalDate => %params<original-date>,
+            content => $content,
+        });
+        spurt $target, $page;
+
+        @texts.push: {
+            title => %params<title>,
+            link => "/$link-name",
+            originalTitle => %params<original-title>,
+            originalLink => %params<original-link>,
+            originalDate => %params<original-date>
+        };
+    }
+}
+
+
+spurt $output-dir ~ '/texte.html', $mu.render('texts-list', {
+    menu => @menu-home,
+    texts => @texts
+});
+
+
+sub urlify(Str $text) {
+    my $result = $text;
+    $result ~~ s:g/ <-[ a..z A..Z 0..9 _ \s ]>+ //;
+    $result ~~ s:g/ <[ \s _ ]>+ /_/;
+    return $result;
+}
+
+=begin pod
+
+=head1 Todos
+
+=end pod
+

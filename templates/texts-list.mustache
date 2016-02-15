@@ -1,0 +1,16 @@
+{{>head-matter}}
+
+<div class="row medium-10 large-5 columns">
+<h2>Texte</h2>
+<p>Die Einträge sind nach Datum der ursprünglichen Veröffentlichung sortiert.</p>
+<p>
+<ul>
+{{#texts}}
+    <li><a href="{{link}}">{{title}}</a> - <small><a href="{{originalLink}}">{{originalTitle}}</a> {{originalDate}}</small></li>
+{{/texts}}
+</ul>
+</p>
+</div>
+
+{{>foot-matter}}
+

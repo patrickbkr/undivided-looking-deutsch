@@ -1,0 +1,32 @@
+body {
+    font-family: "Times New Roman", Times, serif;
+}
+
+.top-bar {
+    margin-bottom: 3em;
+}
+
+.top-bar, .top-bar ul {
+    background-color: #f6f6f6;
+}
+
+body a {
+    color: #00139E;
+}
+
+.active {
+    background-color: rgb(234, 234, 234);
+    border-radius: 3px;
+}
+
+
+.menu-text {
+    padding: 0px;
+    font-size: 130%;
+}
+
+#home-button {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
