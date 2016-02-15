@@ -18,6 +18,8 @@ rm( $output-dir.IO.dir, :r );
 for "$static-dir/css".IO.dir { .copy: "$output-dir/css/" ~ $_.basename };
 "$output-dir/js".IO.mkdir;
 for "$static-dir/js".IO.dir { .copy: "$output-dir/js/" ~ $_.basename };
+"$output-dir/fonts".IO.mkdir;
+for "$static-dir/fonts".IO.dir { .copy: "$output-dir/fonts/" ~ $_.basename };
 "$output-dir/texte".IO.mkdir;
 
 my $mu = Template::Mustache.new: :from<./templates>;
@@ -78,7 +80,7 @@ for dir $text-dir -> $text {
 
 
 spurt $output-dir ~ '/texte.html', $mu.render('texts-list', {
-    menu => @menu-home,
+    menu => @menu-texts,
     texts => @texts
 });
 

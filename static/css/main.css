@@ -1,13 +1,66 @@
-body {
-    font-family: "Times New Roman", Times, serif;
+@font-face {
+    font-family: 'Linux Libertine';
+    src: local('Linux Libertine Display'),
+/*         local('Linux Libertine Display O'), */
+         url('/fonts/LinLibertine_DR.woff') format('woff');
+}
+@font-face {
+    font-family: 'Linux Libertine';
+    src: local('Linux Libertine'),
+/*        local('Linux Libertine O'), */
+         url('/fonts/LinLibertine_RB.woff') format('woff');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Linux Libertine';
+    src: local('Linux Libertine'),
+/*       local('Linux Libertine O'), */
+         url('/fonts/LinLibertine_RI.woff') format('woff');
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Linux Biolinum';
+    src: local('Linux Biolinum'),
+/*      local('Linux Biolinum O'), */
+         url('/fonts/LinBiolinum_R.woff') format('woff');
+}
+@font-face {
+    font-family: 'Linux Biolinum';
+    src: local('Linux Biolinum'),
+/*     local('Linux Biolinum O'), */
+         url('/fonts/LinBiolinum_RB.woff') format('woff');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Linux Biolinum';
+    src: local('Linux Biolinum'),
+/*       local('Linux Biolinum O'), */
+         url('/fonts/LinBiolinum_RI.woff') format('woff');
+    font-style: italic;
+}
+
+
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: "Linux Biolinum", "Times New Roman", Times, serif;
 }
 
 .top-bar {
     margin-bottom: 3em;
+    border-bottom: 2px solid #F0F0F0;
 }
 
 .top-bar, .top-bar ul {
     background-color: #f6f6f6;
+}
+
+.callout.primary {
+    background-color: #8188d7;
+    border-top: 3px solid rgba(213, 213, 213, 0.3);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.41);
+}
+
+.subheader {
+    color: #393939;
 }
 
 body a {
