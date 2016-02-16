@@ -17,7 +17,8 @@ sub MAIN( Str :$url-prefix = '' ) {
         urlPrefix => $url-prefix
     ;
 
-
+    rm( $output-dir ) if ! $output-dir.IO.d;
+    mkdir $output-dir if ! $output-dir.IO.e;
     rm( $output-dir.IO.dir, :r );
 
     "$output-dir/css".IO.mkdir;
