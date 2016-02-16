@@ -22,7 +22,7 @@ sub MAIN( Str :$url-prefix = '' ) {
     rm( $output-dir.IO.dir, :r );
 
     "$output-dir/css".IO.mkdir;
-    for "$static-dir/css".IO.dir { .copy: "$output-dir/css/" ~ $_.basename };
+    #for "$static-dir/css".IO.dir { .copy: "$output-dir/css/" ~ $_.basename };
     "$output-dir/js".IO.mkdir;
     for "$static-dir/js".IO.dir { .copy: "$output-dir/js/" ~ $_.basename };
     "$output-dir/fonts".IO.mkdir;
