@@ -31,6 +31,8 @@ sub MAIN( Str :$url-prefix = '' ) {
 
     my $mu = Template::Mustache.new: :from<./templates>;
 
+    spurt $output-dir ~ '/css/main.css', $mu.render( 'main-css', %defaults );
+
     my @menu-home =
         { :name('Texte'), :link("$url-prefix/texte.html") },
         { :name('Kontakt'), :link("$url-prefix/kontakt.html") },
