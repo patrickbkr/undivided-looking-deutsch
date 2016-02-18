@@ -99,7 +99,7 @@ sub MAIN( Str :$url-prefix = '' ) {
 
 sub urlify(Str $text) {
     my $result = $text;
-    $result ~~ s:g/ <-[ a..z A..Z 0..9 _ \s ]>+ //;
+    $result ~~ s:g/ <[ \!\#\$\%\&\'\(\)\*\+\,\/\:\;\=\?\@\[\] ]>+ //;
     $result ~~ s:g/ <[ \s _ ]>+ /_/;
     return $result;
 }
