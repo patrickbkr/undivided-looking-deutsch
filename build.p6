@@ -88,7 +88,7 @@ sub MAIN( Str :$url-prefix = '' ) {
         }
     }
 
-    @texts.sort( { dateFromText( %^a<originalDate> ) <=> dateFromText( %^b<originalDate> )});
+    @texts.=sort( { dateFromText( %^a<originalDate> ) <=> dateFromText( %^b<originalDate> )});
 
     spurt $output-dir ~ '/texte.html', $mu.render('texts-list', %(
         |%defaults,
