@@ -5,7 +5,7 @@ original-link: "http://www.wall.org/~aron/blog/does-the-atonement-make-ethical-s
 original-date: "22.10.2013"
 ---
 
-> …und damit verurteilte der Richter den Mörder zum Tode auf dem elektischen Stuhl. Aber gerade in diesem Moment tauchte der Sohn des Richters auf. „Bitte bestrafe mich an seiner Stelle! Dann muss er nicht sterben.“ Wegen seinem Mitleid mit dem Mörder stimmte der Richter zu. Der Sohn des Richters wurde hingerichtet und der Verbrecher wurde frei gelassen. Während Tränen über seine Wangen liefen gelobte der Mörder von diesem Tage an ein neuer Mensch zu sein…
+> …und damit verurteilte der Richter den Mörder zum Tode auf dem elektischen Stuhl. Aber gerade in diesem Moment tauchte der einzige Sohn des Richters auf. „Bitte bestrafe mich an seiner Stelle! Dann muss er nicht sterben.“ Wegen seinem Mitleid mit dem Mörder stimmte der Richter zu. Der Sohn des Richters wurde hingerichtet und der Verbrecher wurde frei gelassen. Während Tränen über seine Wangen liefen gelobte der Mörder von diesem Tage an ein neuer Mensch zu sein…
 
 Dieses Gleichnis taucht nirgendwo in der Bibel auf, aber ich bin ziemlich sicher schon ein oder zwei Mal eine Variante davon als Analogie für Jesu Opfer am Kreuz in einer Predigt gehört zu haben. Das Problem ist: Die Geschichte ist moralisch gesehen ungeheuerlich. Wie könnte es jemals gerecht sein eine unschuldige Person an stelle einer schuldigen zu bestrafen? In der Geschichte meldet sich der Sohn freiwillig zu sterben; der Richter bestimmt nicht einfach die Hinrichtung einer zufälligen Person. Aber wie soll denn die Stafe für die Schuld von einer Person zu einer anderen „übertragen“ werden? Der Richter verletzt hier seine grundlegende Verantwortung  richtig zu richten:
 
