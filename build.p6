@@ -23,7 +23,9 @@ sub MAIN( Str :$url-prefix = '' ) {
 
     for 'css','js','fonts','img' -> $sub-dir {
         "$output-dir/$sub-dir".IO.mkdir;
-        for "$static-dir/$sub-dir".IO.dir { .copy: "$output-dir/$sub-dir/" ~ $_.basename };
+        if "$static-dir/$sub-dir".IO.e {
+            for "$static-dir/$sub-dir".IO.dir { .copy: "$output-dir/$sub-dir/" ~ $_.basename };
+        }
     }
 
     "$output-dir/texte".IO.mkdir;
