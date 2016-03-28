@@ -21,12 +21,11 @@ sub MAIN( Str :$url-prefix = '' ) {
     mkdir $output-dir if ! $output-dir.IO.e;
     rm( $output-dir.IO.dir, :r );
 
-    "$output-dir/css".IO.mkdir;
-    #for "$static-dir/css".IO.dir { .copy: "$output-dir/css/" ~ $_.basename };
-    "$output-dir/js".IO.mkdir;
-    for "$static-dir/js".IO.dir { .copy: "$output-dir/js/" ~ $_.basename };
-    "$output-dir/fonts".IO.mkdir;
-    for "$static-dir/fonts".IO.dir { .copy: "$output-dir/fonts/" ~ $_.basename };
+    for 'css','js','fonts','img' -> $sub-dir {
+        "$output-dir/$sub-dir".IO.mkdir;
+        for "$static-dir/$sub-dir".IO.dir { .copy: "$output-dir/$sub-dir/" ~ $_.basename };
+    }
+
     "$output-dir/texte".IO.mkdir;
 
     my $mu = Template::Mustache.new: :from<./templates>;
@@ -61,6 +60,7 @@ sub MAIN( Str :$url-prefix = '' ) {
             my $filecontent = slurp $text;
             my ($, $yaml, $markdown) = $filecontent.split('---', 3).map: *.trim ;
             my %params = load-yaml $yaml;
+            $markdown ~~ s/ \{\{urlPrefix\}\} /$url-prefix/;
             my $content = markdown $markdown;
 
             my $filename = urlify( %params<title> ) ~ '.html';
@@ -109,10 +109,4 @@ sub dateFromText( Str $text ) {
     my ($day, $month, $year) = $0, $1, $2;
     return Date.new($year, $month, $day);
 }
-
-=begin pod
-
-=head1 Todos
-
-=end pod
 
